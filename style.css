@@ -40,9 +40,19 @@ body{
     --background-color: #121212;
     --text-color: #ffffff;
     --card-color: #1e1e1e;
+    height: 5rem;
+    width: 100%;
 }
 
 .header_div_container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cpp_container{
+    margin: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
