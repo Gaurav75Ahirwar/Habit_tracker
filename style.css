@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
+/* Base of the Page */
 * {
     margin: 0;
     padding: 0;
@@ -21,33 +21,42 @@ html{
     --background-color: #ffffff;
     --text-color: #111111;
     --card-color: #f5f5f5;
+    --border-color: rgba(0, 0, 0, 0.3);
+    --hover-bg: rgba(0, 0, 0, 0.05);
+    --title-bg: #0284c7;
+}
+
+.dark-mode {
+    --primary-color: #0a84c1;
+    --background-color: #121212;   
+    --text-color: #e5e5e5;         
+    --card-color: #1e1e1e;         
+    --border-color: rgba(255, 255, 255, 0.25);
+    --hover-bg: rgba(255, 255, 255, 0.05);
+    --title-bg: #0369a1;
 }
 
 body{
     background: var(--background-color);
     color: var(--text-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
 
 }
 
-.card{
-    background: var(--card-color);
-}
 
+
+/* Header  */
 .header{
     height: 10rem;
     display: flex;
     align-items: center;
     background: var(--primary-color);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-
+    transition: background-color 0.5s ease;
 }
 
-.dark-mode {
-    --background-color: #121212;
-    --text-color: #ffffff;
-    --card-color: #1e1e1e;
-}
 
+/* --Nav Buttons */
 .header_div_container{
     width: 100%;
     padding: 0 3rem;
@@ -55,8 +64,6 @@ body{
     justify-content: space-between;
     align-items: center;
 }
-
-
 
 .cpp_container{
     height: 100%;
@@ -76,6 +83,8 @@ body{
     position: relative;
 }
 
+/* --Nav & Login buttons handled together */
+.login_container button::after,
 .cpp_container a::after {
     content: "";
     position: absolute;
@@ -83,19 +92,47 @@ body{
     bottom: 0;
     width: 0%;
     height: 0.2rem;
-    background: rgba(0, 0, 0, 1);
+    background: var(--border-color);
     transition: width 0.5s ease;
 }
 
+.login_container button:hover::after,
 .cpp_container a:hover::after {
     width: 100%;
 }
 
+.login_container button:hover,
+.cpp_container a:hover {
+    background: var(--hover-bg);
+}
+
+.cpp_container a,
+.login_container button {
+    transition : 
+    background-color 0.5s ease, color 0.5s ease,
+    color 0.5s ease,
+    border-color 0.5s ease; 
+}
+
+
+/* --Title badge */
 .title_container {
     font-size: 2.4rem;
     text-align: center;
+    padding: 0.6rem 1.5rem;
 }
 
+.title_container h1{
+    display: inline-block;
+    font-size: 5rem;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;     
+    border-radius: 1rem;
+    background: var(--title-bg);
+    box-shadow: 0 0.2rem 0.6rem rgba(0,0,0,0.2);
+}
+
+/* --Login & theme toggle */
 .login_container {
     height: 100%;
     display: flex;
@@ -105,78 +142,25 @@ body{
 }
 
 .login_container button{
+    font-size: 1.6rem;
+    padding: 0.6rem 1.2rem;
     background: transparent;
     border: none;
     border-radius: 1rem;
-    font-size: 1.6rem;
-    padding: 0.6rem 1.2rem;
+    color: var(--text-color);
+    transition: 0.1s;
     position: relative;
 }
 
-.login_container button::after,
-.login_container button::before{
-    content: "";
-    position: absolute;
-    background: black;
-    border: 0.09rem solid rgba(0,0,0,1);
-    transition: all 0.5s ease;
+#theme-toggle{
+    transition:  opacity 0.5s ease;
 }
 
-.login_container button:hover::before {
-    height: 0.09rem;
-    width: 0%;
-    top: 0;
-    left: 0;
-}
-
-.login_container button::after {
-    height: 0.09rem;
-    width: 0%;
-    bottom: 0;
-    right: 0;
-}
-
-.login_container button span::before,
-.login_container button span::after{
-    content: "";
-    position: absolute;
-    width: 0.09rem;
-    height: 0%;
-    background: black;
-    transition: all 0.5s ease;
-}
-
-.login_container button span::before{
-    left: 0;
-    bottom: 0;
-}
-
-.login_container button span::before{
-    right: 0;
-    top: 0;
-}
-
-.login_container button:hover::before{
-    width: 100%;
-}
-
-.login_container button:hover span::after{
-    height: 100%;
-}
-
-.login_container button:hover::after{
-    width: 100%;
-}
-
-.login_container button:hover span::before{
-    height: 100%;
-}
-
-.dark-mode .login_container button:hover {
-    border: 0.1rem solid rgba(255, 255, 255, 0.2);
-    background: rgba(255,255,255,0.05);
+.fade{
+    opacity: 0;
 }
 
 button, a {
     cursor: pointer;
 }
+
