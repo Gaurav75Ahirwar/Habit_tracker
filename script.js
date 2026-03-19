@@ -1,31 +1,41 @@
-const toggleBtn = document.getElementById("theme-toggle");
-
-// Load saved theme
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
-    toggleBtn.textContent = "☀️";
-} else {
-    toggleBtn.textContent = "🌙";
-}
-
-toggleBtn.addEventListener("click", () => {
-    // fade out
-    toggleBtn.classList.add("fade");
-
-    setTimeout(() => {
-        // toggle theme
-        document.body.classList.toggle("dark-mode");
-
-        if (document.body.classList.contains("dark-mode")) {
-            localStorage.setItem("theme", "dark");
-            toggleBtn.textContent = "☀️";
-        } else {
-            localStorage.setItem("theme", "light");
-            toggleBtn.textContent = "🌙";
+document.addEventListener("DOMContentLoaded", () => {
+    // Get the Theme-toggle button 
+    const toggleBtn = document.getElementById("theme-toggle");
+    
+    // Function for toggle theme 
+    function setIcon(){
+        if(document.body.classList.contains("dark-mode")){
+            toggleBtn.innerHTML = '<i data-lucide="sun"></i>';
+        } else{
+            toggleBtn.innerHTML = '<i data-lucide="moon"></i>';
         }
+        lucide.createIcons();
+    }
 
-        // fade back in
-        toggleBtn.classList.remove("fade");
+    // Load the saved theme
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+    }
 
-    }, 175); // delay matches transition
+    setIcon();
+
+    // Change Theme on click 
+    toggleBtn.addEventListener("click", () => {
+        toggleBtn.classList.add("fade");
+
+        setTimeout(() => {
+            document.body.classList.toggle("dark-mode");
+
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("theme", "dark");
+            } else {
+                localStorage.setItem("theme", "light");
+            }
+
+            setIcon();
+            toggleBtn.classList.remove("fade");
+
+        }, 175);
+    });
+
 });

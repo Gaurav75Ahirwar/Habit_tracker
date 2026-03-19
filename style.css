@@ -50,8 +50,10 @@ body{
     display: flex;
     align-items: center;
     background: var(--primary-color);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     transition: background-color 0.5s ease;
+    /* position: sticky;
+    top: 0; */
 }
 
 
@@ -129,7 +131,7 @@ body{
     padding: 0.6rem 1.5rem;     
     border-radius: 1rem;
     background: var(--title-bg);
-    box-shadow: 0 0.2rem 0.6rem rgba(0,0,0,0.2);
+    box-shadow: 0 0.2rem 0.6rem rgba(0,0,0,0.5);
 }
 
 
@@ -154,6 +156,13 @@ body{
 }
 
 #theme-toggle{
+    color: var(--text-color);
+    font-size: 1.8rem;
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition:  opacity 0.5s ease;
 }
 
