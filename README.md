@@ -3,27 +3,35 @@ Basic Habit Tracker to implement the learning outcomes of Development Technologi
 
 Decide the Colors !!
 For Light Mode :-
+Whole Page:
+Primary → #cddcef
+Background → #b6d0f1
+
 Goals:
-primary → #8e44ad
-background → #f3e8ff
+Primary → #8e44ad
+Background → #f3e8ff
 
 Productivity:
-primary → #4a90e2
-background → #dceeff
+Primary → #4a90e2
+Background → #dceeff
 
 Progress:
-primary → #27ae60
-background → #e8f8f0
+Primary → #27ae60
+Background → #e8f8f0
 
 For Dark Mode :-
+Whole Page:
+Primary → #31487d
+Background → #28334b
+
 Goals:
-primary → #bb86fc
-background → #2a1b3d 
+Primary → #bb86fc
+Background → #2a1b3d 
 
 Productivity:
-primary → #4a90e2
-background → #1c2a3a 
+Primary → #4a90e2
+Background → #1c2a3a 
 
 Progress:
-primary → #27ae60
-background → #1b2f24 
+Primary → #27ae60
+Background → #1b2f24 
