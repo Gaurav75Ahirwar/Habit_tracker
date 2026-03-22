@@ -38,4 +38,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 175);
     });
 
+    
+    // Task description toggle button 
+    document.querySelectorAll(".toogle-desc").forEach(button => {
+        button.addEventListener("click", () => {
+
+            const description = button.parentElement.nextElementSibling;
+
+            if(description.style.display === "block"){
+                description.style.display = "none";
+            } else{
+                description.style.display = "block";
+            }
+        })
+    }) 
+
 });

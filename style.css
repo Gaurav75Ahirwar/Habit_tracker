@@ -24,6 +24,15 @@ html{
     --hover-bg: rgba(0, 0, 0, 0.1);
     --transition-main: 0.5s ease;
     --transition-fast: 0.25 ease;
+
+    --goal-card-pri: #8e44ad;
+    --goal-card-bg: #f3e8ff;
+
+    --productivity-card-pri: #4a90e2;
+    --productivity-card-bg: #dceeff;
+
+    --progress-card-pri: #27ae60;
+    --progress-card-bg: #e8f8f0;
 }
 
 .dark-mode {
@@ -33,6 +42,15 @@ html{
     --border-color: rgba(255, 255, 255, 0.25);
     --hover-bg: rgba(205, 220, 239, 0.1);
     --title-bg: #28334b;
+
+    --goal-card-pri: #bb86fc;
+    --goal-card-bg: #2a1b3d;
+
+    --productivity-card-pri: #4a90e2;
+    --productivity-card-bg: #1c2a3a ;
+
+    --progress-card-pri: #27ae60;
+    --progress-card-bg: #1b2f24;
 }
 
 body{
@@ -50,6 +68,7 @@ body{
     align-items: center;
     background: var(--primary-color);
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border-radius: 2rem;
     transition: background-color var(--transition-main);
     z-index: 1;
 }
@@ -126,7 +145,7 @@ body{
     font-size: 5rem;
     font-weight: 500;
     padding: 0.6rem 1.5rem;     
-    border-radius: 0.5rem;
+    border-radius: 2rem;
     background: var(--background-color);
     z-index: 0;
 }
@@ -171,3 +190,79 @@ button, a {
     cursor: pointer;
 }
 
+
+/* Main */
+.main-container{
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* For the Desktop Application  */
+@media (min-width: 102.4rem){
+    .main-container{
+        width: 90%;
+        max-width: 125rem;
+        margin: 2.5rem auto;
+        
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        gap: 2rem;
+
+        height: calc(100vh - 15rem);
+    }
+
+    .goals{
+        grid-column: 1;
+        grid-row: span 2;
+    }
+
+    .productivity{
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .progress{
+        grid-column: 2;
+        grid-row: 2;
+    }
+}
+
+
+/* Goal Card */
+.goals{
+    color: var(--goal-card-pri);
+    background: var(--goal-card-bg);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    align-content: space-between;
+}
+
+/* Productivity Card */
+.productivity{
+    color: var(--productivity-card-pri);
+    background: var(--productivity-card-bg);
+}
+
+/* Progress Card  */
+.progress{
+    color: var(--progress-card-pri);
+    background: var(--progress-card-bg);
+}
+
+.goals,
+.productivity,
+.progress{
+    border-radius: 2rem;
+
+    padding: 2rem;
+
+}
