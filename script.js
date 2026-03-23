@@ -40,17 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
     // Task description toggle button 
-    document.querySelectorAll(".toogle-desc").forEach(button => {
+    document.querySelectorAll(".toggle-desc").forEach(button => {
         button.addEventListener("click", () => {
 
-            const description = button.parentElement.nextElementSibling;
+            const description = button.closest(".task-item").querySelector(".task-description");
 
-            if(description.style.display === "block"){
-                description.style.display = "none";
-            } else{
-                description.style.display = "block";
-            }
-        })
-    }) 
+            description.classList.toggle("show");
+
+            button.classList.toggle("open");
+        });
+    });
 
 });
