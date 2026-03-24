@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Get the Theme-toggle button 
     const toggleBtn = document.getElementById("theme-toggle");
-    
+
     // Function for toggle theme 
-    function setIcon(){
-        if(document.body.classList.contains("dark-mode")){
+    function setIcon() {
+        if (document.body.classList.contains("dark-mode")) {
             toggleBtn.innerHTML = '<i data-lucide="sun"></i>';
-        } else{
+        } else {
             toggleBtn.innerHTML = '<i data-lucide="moon"></i>';
         }
         lucide.createIcons();
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 175);
     });
 
-    
+
     // Task description toggle button 
     document.querySelectorAll(".toggle-desc").forEach(button => {
         button.addEventListener("click", () => {

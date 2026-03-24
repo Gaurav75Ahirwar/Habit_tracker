@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* Base of the Page */
 * {
     margin: 0;
@@ -11,13 +12,13 @@
     font-variation-settings: "wdth" 100;
 }
 
-html{
+html {
     scroll-behavior: smooth;
     font-size: 62.5%;
 }
 
-:root{
-    --primary-color:  #cddcef;
+:root {
+    --primary-color: #cddcef;
     --background-color: #b6d0f1;
     --text-color: #111111;
     --border-color: rgba(0, 0, 0, 0.3);
@@ -37,8 +38,8 @@ html{
 
 .dark-mode {
     --primary-color: #31487d;
-    --background-color: #28334b;   
-    --text-color: #e5e5e5;   
+    --background-color: #28334b;
+    --text-color: #e5e5e5;
     --border-color: rgba(255, 255, 255, 0.25);
     --hover-bg: rgba(205, 220, 239, 0.1);
     --title-bg: #28334b;
@@ -47,13 +48,13 @@ html{
     --goal-card-bg: #2a1b3d;
 
     --productivity-card-pri: #4a90e2;
-    --productivity-card-bg: #1c2a3a ;
+    --productivity-card-bg: #1c2a3a;
 
     --progress-card-pri: #27ae60;
     --progress-card-bg: #1b2f24;
 }
 
-body{
+body {
     background: var(--background-color);
     color: var(--text-color);
     transition: background-color var(--transition-main), color var(--transition-main);
@@ -62,12 +63,12 @@ body{
 
 
 /* Header  */
-.header{
+.header {
     height: 10rem;
     display: flex;
     align-items: center;
     background: var(--primary-color);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     border-radius: 2rem;
     transition: background-color var(--transition-main);
     z-index: 1;
@@ -75,7 +76,7 @@ body{
 
 
 /* --Nav Buttons */
-.header_div_container{
+.header_div_container {
     color: var(--primary-color);
     width: 100%;
     padding: 0 3rem;
@@ -85,7 +86,7 @@ body{
     position: relative;
 }
 
-.cpp_container{
+.cpp_container {
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -93,12 +94,12 @@ body{
     gap: 1.5rem;
 }
 
-.cpp_container a{
+.cpp_container a {
     font-size: 1.6rem;
     padding: 0.6rem 1.2rem;
     text-decoration: none;
     color: var(--text-color);
-    border-radius: 1rem  1rem 0 0;
+    border-radius: 1rem 1rem 0 0;
     position: relative;
 }
 
@@ -127,9 +128,9 @@ body{
 
 .cpp_container a,
 .login_container button {
-    transition : 
-    background-color var(--transition-main), color var(--transition-main),
-    border-color var(--transition-main); 
+    transition:
+        background-color var(--transition-main), color var(--transition-main),
+        border-color var(--transition-main);
 }
 
 
@@ -144,25 +145,25 @@ body{
     color: var(--text-color);
 }
 
-.title_container h1{
+.title_container h1 {
     display: inline-block;
     font-size: 5rem;
     font-weight: 600;
-    padding: 0.6rem 1.5rem;     
+    padding: 0.6rem 1.5rem;
     border-radius: 2rem;
     background: var(--background-color);
     z-index: 0;
 }
 
-.title_container h1 span:nth-child(1){
+.title_container h1 span:nth-child(1) {
     color: var(--goal-card-pri);
 }
 
-.title_container h1 span:nth-child(2){
+.title_container h1 span:nth-child(2) {
     color: var(--productivity-card-pri);
 }
 
-.title_container h1 span:nth-child(3){
+.title_container h1 span:nth-child(3) {
     color: var(--progress-card-pri);
 }
 
@@ -175,18 +176,18 @@ body{
     gap: 1.5rem;
 }
 
-.login_container button{
+.login_container button {
     font-size: 1.6rem;
     padding: 0.6rem 1.2rem;
     background: transparent;
     border: none;
-    border-radius: 1rem  1rem 0 0;
+    border-radius: 1rem 1rem 0 0;
     color: var(--text-color);
     transition: 0.1s;
     position: relative;
 }
 
-#theme-toggle{
+#theme-toggle {
     color: var(--text-color);
     font-size: 1.8rem;
     width: 5rem;
@@ -194,20 +195,21 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition:  opacity var(--transition-main);
+    transition: opacity var(--transition-main);
 }
 
-.fade{
+.fade {
     opacity: 0;
 }
 
-button, a {
+button,
+a {
     cursor: pointer;
 }
 
 
 /* Main */
-.main-container{
+.main-container {
     margin: auto;
     display: grid;
     grid-template-columns: 1fr;
@@ -216,12 +218,12 @@ button, a {
 }
 
 /* For the Desktop Application  */
-@media (min-width: 102.4rem){
-    .main-container{
+@media (min-width: 102.4rem) {
+    .main-container {
         width: 90%;
         max-width: 125rem;
         margin: 2.5rem auto;
-        
+
         display: grid;
 
         grid-template-columns: 1fr 1fr;
@@ -232,17 +234,17 @@ button, a {
         height: calc(100vh - 15rem);
     }
 
-    .goals{
+    .goals {
         grid-column: 1;
         grid-row: span 2;
     }
 
-    .productivity{
+    .productivity {
         grid-column: 2;
         grid-row: 1;
     }
 
-    .progress{
+    .progress {
         grid-column: 2;
         grid-row: 2;
     }
@@ -250,35 +252,147 @@ button, a {
 
 
 /* Goal Card */
-.goals{
+.goals {
     color: var(--goal-card-pri);
     background: var(--goal-card-bg);
-    
+
 }
 
-.goals h2{
+.goals h2 {
     display: inline-block;
     font-size: 4rem;
     font-weight: 400;
-    padding: 0.6rem 1.5rem; 
-    margin: 2rem auto;    
+    padding: 0.6rem 1.5rem;
+    margin: 2rem auto;
     border-radius: 1rem;
     background: var(--background-color);
     z-index: 0;
 
 }
 
-
-/* More into Tasks */
-.task-description{
-    display: none;
+/* More into Tasks*/
+/* Task List  */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.task-description.show{
+.task-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+/* --CheckBox */
+.task-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 2rem;
+    height: 2rem;
+
+    border: 0.2rem solid var(--text-color);
+    border-radius: 1rem;
+
+    cursor: pointer;
+    position: relative;
+
+    transition: background-color var(--transition-main),
+        border-color var(--transition-main),
+        transform var(--transition-main);
+}
+
+.task-checkbox::after {
+    content: "✓";
+
+    position: absolute;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    color: var(--text-color);
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%) scale(0);
+
+    transition: transform var(--transition-main);
+}
+
+.task-checkbox:checked {
+    background-color: var(--goal-card-pri);
+    border-color: var(--goal-card-pri);
+
+    transform: scale(1.05);
+}
+
+.task-checkbox:checked::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.task-checkbox:hover {
+    transform: scale(1.05);
+}
+
+.task-checkbox:focus {
+    outline: 0.2rem solid var(--goal-card-pri);
+    outline-offset: 0.2rem;
+}
+
+/* --Task Description  */
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.task-title {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--text-color);
+
+    flex: 1;
+    transition: text-decoration var(--transition-main),
+        opacity var(--transition-main),
+        color var(--transition-main);
+}
+
+.task-description {
+    display: none;
+
+    font-size: 1.5rem;
+    line-height: 1.5;
+
+    margin-top: 0.6rem;
+    padding-left: 3rem;
+
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* If checked  */
+.task-checkbox:checked+.task-title {
+    text-decoration: line-through;
+    opacity: 0.8;
+    color: var(--border-color);
+}
+
+.task-description.show {
     display: block;
 }
 
-.toggle-desc{
+/* --Description Toggle Button  */
+.toggle-desc {
+    margin-left: auto;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -287,30 +401,34 @@ button, a {
     color: var(--text-color);
 }
 
-.toggle-desc:hover{
+.toggle-desc:hover {
     background: var(--hover-bg);
 }
 
-.toggle-desc svg{
+.toggle-desc svg {
     transition: transform var(--transition-main);
 }
 
-.toggle-desc.open svg{
+.toggle-desc.open svg {
     transform: rotate(90deg);
 }
 
+
+
+
+
 /* Productivity Card */
-.productivity{
+.productivity {
     color: var(--productivity-card-pri);
     background: var(--productivity-card-bg);
 }
 
-.productivity h2{
+.productivity h2 {
     display: inline-block;
     font-size: 2.5rem;
     font-weight: 400;
-    padding: 0.6rem 1.5rem; 
-    margin: 2rem auto;    
+    padding: 0.6rem 1.5rem;
+    margin: 2rem auto;
     border-radius: 1rem;
     background: var(--background-color);
     z-index: 0;
@@ -318,17 +436,17 @@ button, a {
 }
 
 /* Progress Card  */
-.progress{
+.progress {
     color: var(--progress-card-pri);
     background: var(--progress-card-bg);
 }
 
-.progress h2{
+.progress h2 {
     display: inline-block;
     font-size: 2.5rem;
     font-weight: 400;
-    padding: 0.6rem 1.5rem; 
-    margin: 2rem auto;    
+    padding: 0.6rem 1.5rem;
+    margin: 2rem auto;
     border-radius: 1rem;
     background: var(--background-color);
     z-index: 0;
@@ -341,7 +459,7 @@ button, a {
 /* Handled Together */
 .goals,
 .productivity,
-.progress{
+.progress {
     border-radius: 2rem;
     padding: 2rem;
     display: flex;
