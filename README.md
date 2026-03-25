@@ -8,7 +8,7 @@ Primary → #cddcef
 Background → #b6d0f1
 
 Goals:
-Primary → #8e44ad
+Primary → #bb86fc
 Background → #f3e8ff
 
 Productivity:

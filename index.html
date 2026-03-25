@@ -55,6 +55,10 @@
 
                 <ul class="task-list">
 
+                    <p id="empty-msg">
+                        No Goal Added Yet - Tap "Add Task" to Add
+                    </p>
+
                     <li class="task-item">
 
                         <div class="task-content">
@@ -78,7 +82,10 @@
                 </ul>
 
                 <div class="add-task-btn">
-                    <button id="add-task-btn">+ Add Task</button>
+                    <button id="add-task-btn">
+                        <i data-lucide="plus"></i>
+                        Add Task
+                    </button>
                 </div>
 
             </div>
@@ -96,7 +103,48 @@
 
     </main>
 
+    <div id="task-modal" class="modal">
 
+        <div class="modal-content">
+
+            <h2>Add New Goal</h2>
+
+            <form id="task-form">
+                <div class="form-field">
+
+                    <label for="task-title-input">
+                        Task Title
+                    </label>
+
+                    <input type="text" id="task-title-input" placeholder="Enter Task Title" required>
+
+                </div>
+                <div class="form-field">
+
+                    <label for="task-desc-input">
+                        Description
+                    </label>
+
+                    <textarea id="task-desc-input" rows="3" placeholder="Enter Description"></textarea>
+
+                </div>
+                <div class="form-btn">
+
+                    <button type="submit" id="save-task-btn">
+                        Save
+                    </button>
+
+                    <button type="button" id="cancel-task-btn">
+                        Cancel
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
     <script src="/script.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </body>

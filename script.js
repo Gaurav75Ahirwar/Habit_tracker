@@ -51,4 +51,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    //Add Task Form
+    //Modal Elements
+    const addTaskBtn = document.getElementById("add-task-btn");
+    const modal = document.getElementById("task-modal");
+    const cancelbtn = document.getElementById("cancel-task-btn");
+
+    //Open Modal
+    addTaskBtn.addEventListener("click", () => {
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden";
+    });
+
+    //Close Modal
+    cancelbtn.addEventListener("click", () => {
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+    });
+
+    //Close When clicking outside
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("show");
+            document.body.style.overflow = "auto"; //Prevent background scroling
+        }
+    });
+
 });
