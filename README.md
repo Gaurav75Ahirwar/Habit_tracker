@@ -35,3 +35,5 @@ Background → #1c2a3a
 Progress:
 Primary → #27ae60
 Background → #1b2f24 
+
+Updated the README
