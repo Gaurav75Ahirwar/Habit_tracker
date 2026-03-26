@@ -584,26 +584,34 @@ a {
     max-height: 25rem;
     overflow-y: auto;
     line-height: 1.5;
+}
 
+/* Styling the Scrollbar  -- Task List & Add Task Desc */
+.task-list,
+.modal-content textarea {
     /* for firefox */
     scrollbar-width: thin;
     scrollbar-color: var(--border-color) transparent;
 }
 
-/* Styling the Scrollbar  */
+.task-list::-webkit-scrollbar,
 .modal-content textarea::-webkit-scrollbar {
-    width: 0.8rem;
+    width: 0.6rem;
 }
 
-.modal-content textarea::-webki-scrollbar-track {
+.task-list::-webkit-scrollbar-track,
+.modal-content textarea::-webkit-scrollbar-track {
     background: transparent;
 }
 
+.task-list::-webkit-scrollbar-thumb,
 .modal-content textarea::-webkit-scrollbar-thumb {
     background: var(--border-color);
-    border-radius: 1rem;
+    border-radius: 1000rem;
+    transition: background var(--transition-main);
 }
 
+.task-list::-webkit-scrollbar-thumb:hover,
 .modal-content textarea::-webkit-scrollbar-thumb:hover {
     background: var(--goal-card-pri);
 }

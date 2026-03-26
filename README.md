@@ -36,4 +36,4 @@ Progress:
 Primary → #27ae60
 Background → #1b2f24 
 
-Updated the README
+handle the enter behaviour

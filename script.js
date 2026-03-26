@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //Close Modal
     cancelbtn.addEventListener("click", () => {
+        taskForm.reset(); //Clears the previous inputs
         modal.classList.remove("show");
         document.body.style.overflow = "auto";
     });
@@ -72,9 +73,90 @@ document.addEventListener("DOMContentLoaded", () => {
     //Close When clicking outside
     modal.addEventListener("click", (e) => {
         if (e.target === modal) {
+            taskForm.reset();
             modal.classList.remove("show");
             document.body.style.overflow = "auto"; //Prevent background scroling
         }
     });
+
+    // Render & save the Tasks 
+    const taskForm = document.getElementById("task-form");
+    const taskList = document.querySelector(".task-list");
+    const emptyMessage = document.getElementById("empty-msg");
+
+    // Load tasks on page start
+    function loadTasks() {
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+        if (tasks.length === 0) {
+            emptyMessage.style.display = "block";
+            return;
+        }
+
+        emptyMessage.style.display = "none";
+
+        tasks.forEach(task => {
+            renderTask(task.title, task.description);
+        });
+    }
+
+    // Render Task on screen
+    function renderTask(title, description) {
+        const li = document.createElement("li");
+
+        li.className = "task-item";
+
+        li.innerHTML = `
+            <div class="task-content">
+
+                <input type="checkbox" class="task-checkbox">
+
+                <span class="task-title">
+                    ${title}
+                </span>
+                <button class="toggle-desc">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+
+            </div>
+            <div class="task-description">
+                ${description}
+            </div>
+         `;
+        taskList.appendChild(li);
+        lucide.createIcons();
+
+        //  Toggle Description 
+        const toggleDescBtn = li.querySelector(".toggle-desc");
+        toggleDescBtn.addEventListener("click", () => {
+            const desc = li.querySelector(".task-description");
+            desc.classList.toggle("show");
+            toggleDescBtn.classList.toggle("open");
+        });
+    }
+
+    // Save Task 
+    taskForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const title = document.getElementById("task-title-input").value;
+        const description = document.getElementById("task-desc-input").value;
+
+        const newTask = { title, description };
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        tasks.push(newTask);
+
+        localStorage.setItem(
+            "tasks", JSON.stringify(tasks)
+        );
+
+        renderTask(title, description);
+        emptyMessage.style.display = "none";
+        taskForm.reset();
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+    });
+
+    loadTasks();
 
 });
