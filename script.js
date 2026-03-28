@@ -63,6 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.overflow = "hidden";
     });
 
+    // Auto Focus on input 
+    addTaskBtn.addEventListener("click", () => {
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden";
+        document.getElementById("task-title-input").focus();
+    })
+
     //Close Modal
     cancelbtn.addEventListener("click", () => {
         taskForm.reset(); //Clears the previous inputs
@@ -156,6 +163,25 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.classList.remove("show");
         document.body.style.overflow = "auto";
     });
+    // With enter & ctrl+enter key 
+    document.addEventListener("keydown", (e) => {
+        // Only if Form is opened 
+        if (!modal.classList.contains("show"))
+            return;
+        // ESC to close form 
+        if (e.key === "Escape") {
+            taskForm.reset();
+            modal.classList.remove("show");
+            document.body.style.overflow = "auto";
+        }
+        // Enter to Save 
+        if (e.key === "Enter") {
+            if (e.target.tagName === "TEXTAREA" && !e.ctrlKey)
+                return;
+            e.preventDefault();
+            taskForm.requestSubmit();
+        }
+    })
 
     loadTasks();
 
