@@ -36,4 +36,3 @@ Progress:
 Primary → #27ae60
 Background → #1b2f24 
 
-handle the enter behaviour
