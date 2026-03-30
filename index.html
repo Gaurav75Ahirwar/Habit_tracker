@@ -13,6 +13,7 @@
 
         <div class="header_div_container">
 
+            <!-- Nav Buttons  -->
             <div class="cpp_container">
 
                 <a href="#goals">Goals</a>
@@ -21,6 +22,7 @@
 
             </div>
 
+            <!-- Title Badge  -->
             <div class="title_container">
 
                 <h1>
@@ -29,6 +31,7 @@
 
             </div>
 
+            <!-- Logina & Theme buttons -->
             <div class="login_container">
 
                 <button id="theme-toggle">
@@ -49,6 +52,7 @@
 
         <div class="main-container">
 
+            <!-- Goals Card  -->
             <div class="goals">
 
                 <h2>Today's Goals</h2>
@@ -59,9 +63,6 @@
                         No Goal Added Yet - Click "Add Task" to Add
                     </p>
 
-                    <li class="task-item">
-
-                    </li>
                 </ul>
 
                 <div class="task-controls">
@@ -93,6 +94,7 @@
 
     </main>
 
+    <!-- Add Task Form  -->
     <div id="task-modal" class="modal">
 
         <div class="modal-content">
@@ -132,6 +134,42 @@
                 </div>
 
             </form>
+
+        </div>
+
+    </div>
+
+    <!-- Edit Task form  -->
+    <div id="edit-modal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="select-all">
+
+                <input type="checkbox" id="select-all-tasks">
+
+            </div>
+
+            <ul id="edit-task-list">
+                <!-- Will be inserted with real-time  -->
+            </ul>
+
+            <div class="form-btn">
+
+                <button id="edit-selected-btn">
+                    <i data-lucide="square-pen"></i>
+                    Edit
+                </button>
+
+                <button id="clear-selected-btn">
+                    Clear
+                </button>
+
+                <button id="cancel-edit-btn">
+                    Cancel
+                </button>
+
+            </div>
 
         </div>
 

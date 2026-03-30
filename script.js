@@ -163,26 +163,144 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.classList.remove("show");
         document.body.style.overflow = "auto";
     });
-    // With enter & ctrl+enter key 
     document.addEventListener("keydown", (e) => {
-        // Only if Form is opened 
-        if (!modal.classList.contains("show"))
-            return;
-        // ESC to close form 
+
         if (e.key === "Escape") {
-            taskForm.reset();
-            modal.classList.remove("show");
-            document.body.style.overflow = "auto";
+            // Escaoe to exit form 
+            if (modal.classList.contains("show")) {
+                taskForm.reset();
+                modal.classList.remove("show");
+                document.body.style.overflow = "auto";
+            }
+
+            if (editModal.classList.contains("show")) {
+                editModal.classList.remove("show");
+                document.body.style.overflow = "auto";
+            }
+
         }
-        // Enter to Save 
-        if (e.key === "Enter") {
-            if (e.target.tagName === "TEXTAREA" && !e.ctrlKey)
+        // Enter to push the entry 
+        if (modal.classList.contains("show")
+            && e.key === "Enter") {
+
+            if (
+                e.target.tagName === "TEXTAREA"
+                && !e.ctrlKey
+            )
                 return;
+
             e.preventDefault();
             taskForm.requestSubmit();
+
         }
-    })
+
+    });
 
     loadTasks();
+
+    // Edit-task form 
+    const editModeBtn = document.getElementById("edit-task-mode-btn");
+    const editModal = document.getElementById("edit-modal");
+    const cancelEditBtn = document.getElementById("cancel-edit-btn");
+    const editBtn = document.getElementById("edit-selected-btn");
+    const clearBtn = document.getElementById("clear-selected-btn");
+
+    // Render the Edit-Task form 
+    function renderEditTaskList() {
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        const list = document.getElementById("edit-task-list");
+        list.innerHTML = "";
+
+        tasks.forEach((task, index) => {
+            const li = document.createElement("li");
+            li.className = "edit-task-item";
+            li.innerHTML = `
+            <input type="checkbox" class="edit-checkbox" data-index="${index}"> 
+            <span> ${task.title}</span>
+            `;
+            list.appendChild(li);
+
+            li.querySelector(".edit-checkbox").addEventListener("change", updateButtonState);
+        });
+
+        updateButtonState();
+    }
+
+    editModeBtn.addEventListener("click", () => {
+        renderEditTaskList();
+
+        editModal.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+    });
+
+    // SelectAll behaviour
+    const SelectAll = document.getElementById("select-all-tasks");
+    SelectAll.addEventListener("change", () => {
+        const boxes = document.querySelectorAll(".edit-checkbox");
+
+        boxes.forEach(box => {
+            box.checked = SelectAll.checked;
+        });
+        updateButtonState();
+    });
+
+    //Track Selection
+    function updateButtonState() {
+        const selected = document.querySelectorAll(".edit-checkbox:checked");
+        const editBtn = document.getElementById("edit-selected-btn");
+        const clearBtn = document.getElementById("clear-selected-btn");
+        if (selected.length === 0) {
+            editBtn.disabled = true;
+            clearBtn.disabled = true;
+            return;
+        }
+        clearBtn.disabled = false;
+        if (selected.length === 1) {
+            editBtn.disabled = false;
+        }
+        else {
+            editBtn.disabled = true;
+        }
+    }
+
+    // Clear Logic 
+    clearBtn.addEventListener("click", () => {
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+        const selected = document.querySelectorAll(".edit-checkbox:checked");
+
+        const indexes = Array.from(selected).map(box => Number(box.dataset.index));
+
+        const remaining = tasks.filter((_, i) => !indexes.includes(i));
+        localStorage.setItem("tasks", JSON.stringify(remaining));
+        location.reload();
+    });
+
+    // Edit Logic
+    editBtn.addEventListener("click", () => {
+        const selected = document.querySelector(".edit-checkbox:checked");
+
+        const index = Number(selected.dataset.index);
+
+        const tasks = JSON.parse(localStorage.getItem("tasks"));
+
+        const task = tasks[index];
+
+        document.getElementById("task-title-input").value = task.title;
+
+        document.getElementById("task-desc-input").value = task.description;
+
+        editModal.classList.remove("show");
+
+        modal.classList.add("show");
+    });
+
+    // Cancel Logic 
+    cancelEditBtn.addEventListener("click", () => {
+        editModal.classList.remove("show");
+
+        document.body.style.overflow = "auto";
+    });
 
 });
