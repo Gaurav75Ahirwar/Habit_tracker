@@ -144,40 +144,46 @@
 
         <div class="modal-content">
 
-            <h2>Edit Tasks</h2>
+            <h2>Edit Task</h2>
 
-            <div class="select-all">
+            <!-- Clear All -->
+            <div class="edit-header">
 
-                <input type="checkbox" id="select-all-checkbox">
+                <button class="clear-all">
+                    <i data-lucide="trash"></i>
+                </button>
 
             </div>
 
-            <ul id="edit-task-list">
+            <ul class="edit-task-list">
 
-                <p id="edit-empty-msg">
-                    No tasks to Edit
-                </p>
+                <p2 class="edit-empty-msg">
+                    No Task Available to Edit
+                </p2>
+                <!-- Taks rendered here dynamically using JS -->
+                <!-- Sample Task Item -->
+                <li class="edit-task-items">
 
-                <li class="edit-task-item">
-                    <span>
+                    <span class="edit-task-title">
                         Study DSA
                     </span>
-                    <input type="checkbox" class="select-checkbox">
+
+                    <div class="edit-actions">
+
+                        <button class="edit-task-btn">
+                            <i data-lucide="square-pen"></i>
+                        </button>
+
+                        <button class="clear-task-btn">
+                            <i data-lucide="trash"></i>
+                        </button>
+
+                    </div>
                 </li>
-                <!-- Will be inserted with real-time  -->
+
             </ul>
 
             <div class="form-btn">
-
-                <button id="edit-selected-btn">
-                    <i data-lucide="square-pen"></i>
-                    Edit
-                </button>
-
-                <button id="clear-selected-btn">
-                    <i data-lucide="trash-2"></i>
-                    Clear
-                </button>
 
                 <button id="cancel-edit-btn">
                     Cancel
@@ -186,6 +192,8 @@
             </div>
 
         </div>
+
+    </div>
 
     </div>
     <script src="/script.js"></script>
