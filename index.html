@@ -144,13 +144,26 @@
 
         <div class="modal-content">
 
+            <h2>Edit Tasks</h2>
+
             <div class="select-all">
 
-                <input type="checkbox" id="select-all-tasks">
+                <input type="checkbox" id="select-all-checkbox">
 
             </div>
 
             <ul id="edit-task-list">
+
+                <p id="edit-empty-msg">
+                    No tasks to Edit
+                </p>
+
+                <li class="edit-task-item">
+                    <span>
+                        Study DSA
+                    </span>
+                    <input type="checkbox" class="select-checkbox">
+                </li>
                 <!-- Will be inserted with real-time  -->
             </ul>
 
@@ -162,6 +175,7 @@
                 </button>
 
                 <button id="clear-selected-btn">
+                    <i data-lucide="trash-2"></i>
                     Clear
                 </button>
 

@@ -214,13 +214,13 @@ document.addEventListener("DOMContentLoaded", () => {
         tasks.forEach((task, index) => {
             const li = document.createElement("li");
             li.className = "edit-task-item";
-            li.innerHTML = `
-            <input type="checkbox" class="edit-checkbox" data-index="${index}"> 
+            li.innerHTML = ` 
             <span> ${task.title}</span>
+            <input type="checkbox" class="select-checkbox" data-index="${index}">
             `;
             list.appendChild(li);
 
-            li.querySelector(".edit-checkbox").addEventListener("change", updateButtonState);
+            li.querySelector(".select-checkbox").addEventListener("change", updateButtonState);
         });
 
         updateButtonState();
@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // SelectAll behaviour
-    const SelectAll = document.getElementById("select-all-tasks");
+    const SelectAll = document.getElementById("select-all-checkbox");
     SelectAll.addEventListener("change", () => {
         const boxes = document.querySelectorAll(".edit-checkbox");
 
