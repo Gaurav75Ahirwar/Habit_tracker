@@ -725,6 +725,134 @@ a {
     background: var(--hover-bg);
 }
 
+/* Edit-task-mode Form  */
+.edit-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.clear-all,
+.clear-task-btn {
+    background: transparent;
+    color: var(--text-color);
+    border: none;
+    padding: 0.6rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+
+    transition: background var(--transition-main),
+        color var(--transition-main),
+        outline var(--transition-main),
+        outline-offset var(--transition-main),
+        box-shadow var(--transition-main),
+        transform var(--transition-main);
+
+}
+
+.clear-all svg,
+.clear-task-btn svg {
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.clear-all:hover,
+.clear-task-btn:hover {
+    background: rgba(220, 30, 30, 0.75);
+    outline: 0.2rem solid var(--border-color);
+    outline-offset: 0.2rem;
+    box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.15);
+}
+
+.clear-all:active,
+.clear-task-btn:active {
+    transform: scale(0.95);
+}
+
+.clear-all:disabled,
+.clear-task-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.clear-all:disabled:hover,
+.clear-task-btn:disabled:hover {
+    background: transparent;
+    outline: none;
+    transform: none;
+}
+
+.clear-all:focus,
+.clear-task-btn:focus {
+    outline: 0.2rem solid var(--goal-card-pri);
+    outline-offset: 0.2rem;
+}
+
+.edit-empty-msg {
+    display: none;
+}
+
+.edit-task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    flex: 1;
+
+    /* overflow-y: auto; */
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.edit-task-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.edit-task-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+    flex: 1;
+}
+
+.edit-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-self: flex-end;
+    align-items: center;
+}
+
+.edit-task-btn {
+    background: transparent;
+    color: var(--text-color);
+    border: none;
+    padding: 0.6rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+
+    transition: background var(--transition-main),
+        color var(--transition-main),
+        outline var(--transition-main),
+        outline-offset var(--transition-main),
+        box-shadow var(--transition-main),
+        transform var(--transition-main);
+}
+
+.edit-task-btn svg {
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
 /* Productivity Card */
 .productivity {
     color: var(--productivity-card-pri);
@@ -742,34 +870,6 @@ a {
     z-index: 0;
 
 }
-
-/* Edit-task-mode Form  */
-.edit-header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.clear-all {
-    background: transparent;
-    color: var(--text-color);
-    border: none;
-    padding: 0.6rem;
-    border-radius: 1rem;
-    transition: background var(--transition-main),
-        border var(--transition-main),
-        outline var(--transition-main),
-        outline-offset var(--transition-main);
-
-}
-
-.clear-all:hover {
-    background: rgba(170, 19, 19, 0.342);
-    border: 0.1rem solid var(--border-color);
-    outline: 0.1rem solid var(--text-color);
-    outline-offset: 0.1rem;
-}
-
 
 /* Progress Card  */
 .progress {
