@@ -733,7 +733,8 @@ a {
 }
 
 .clear-all,
-.clear-task-btn {
+.clear-task-btn,
+.edit-task-btn {
     background: transparent;
     color: var(--text-color);
     border: none;
@@ -751,13 +752,15 @@ a {
 }
 
 .clear-all svg,
-.clear-task-btn svg {
+.clear-task-btn svg,
+.edit-task-btn svg {
     width: 1.8rem;
     height: 1.8rem;
 }
 
 .clear-all:hover,
-.clear-task-btn:hover {
+.clear-task-btn:hover,
+.edit-task-btn:hover {
     background: rgba(220, 30, 30, 0.75);
     outline: 0.2rem solid var(--border-color);
     outline-offset: 0.2rem;
@@ -765,27 +768,35 @@ a {
 }
 
 .clear-all:active,
-.clear-task-btn:active {
+.clear-task-btn:active,
+.edit-task-btn:active {
     transform: scale(0.95);
 }
 
 .clear-all:disabled,
-.clear-task-btn:disabled {
+.clear-task-btn:disabled,
+.edit-task-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
 }
 
 .clear-all:disabled:hover,
-.clear-task-btn:disabled:hover {
+.clear-task-btn:disabled:hover,
+.edit-task-btn:disabled:hover {
     background: transparent;
     outline: none;
     transform: none;
 }
 
 .clear-all:focus,
-.clear-task-btn:focus {
+.clear-task-btn:focus,
+.edit-task-btn:focus {
     outline: 0.2rem solid var(--goal-card-pri);
     outline-offset: 0.2rem;
+}
+
+.edit-task-btn:hover {
+    background: var(--hover-bg);
 }
 
 .edit-empty-msg {
@@ -832,26 +843,6 @@ a {
     align-items: center;
 }
 
-.edit-task-btn {
-    background: transparent;
-    color: var(--text-color);
-    border: none;
-    padding: 0.6rem;
-    border-radius: 0.6rem;
-    cursor: pointer;
-
-    transition: background var(--transition-main),
-        color var(--transition-main),
-        outline var(--transition-main),
-        outline-offset var(--transition-main),
-        box-shadow var(--transition-main),
-        transform var(--transition-main);
-}
-
-.edit-task-btn svg {
-    width: 1.8rem;
-    height: 1.8rem;
-}
 
 /* Productivity Card */
 .productivity {
