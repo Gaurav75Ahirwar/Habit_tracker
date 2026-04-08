@@ -628,33 +628,40 @@ a {
 
 /* Styling the Scrollbar  -- Task List & Add Task Desc */
 .task-list,
-.modal-content textarea {
+.modal-content textarea,
+.edit-scroll-container {
     /* for firefox */
     scrollbar-width: thin;
     scrollbar-color: var(--border-color) transparent;
 }
 
 .task-list::-webkit-scrollbar,
-.modal-content textarea::-webkit-scrollbar {
+.modal-content textarea::-webkit-scrollbar,
+.edit-scroll-container::-webkit-scrollbar {
     width: 0.6rem;
 }
 
 .task-list::-webkit-scrollbar-track,
-.modal-content textarea::-webkit-scrollbar-track {
+.modal-content textarea::-webkit-scrollbar-track,
+.edit-scroll-container::-webkit-scrollbar-track {
     background: transparent;
 }
 
 .task-list::-webkit-scrollbar-thumb,
-.modal-content textarea::-webkit-scrollbar-thumb {
+.modal-content textarea::-webkit-scrollbar-thumb,
+.edit-scroll-container::-webkit-scrollbar-thumb {
     background: var(--border-color);
     border-radius: 1000rem;
     transition: background var(--transition-main);
 }
 
 .task-list::-webkit-scrollbar-thumb:hover,
-.modal-content textarea::-webkit-scrollbar-thumb:hover {
+.modal-content textarea::-webkit-scrollbar-thumb:hover,
+.edit-scroll-container::-webkit-scrollbar-thumb:hover {
     background: var(--goal-card-pri);
 }
+
+/*  */
 
 .modal-content input::placeholder,
 .modal-content textarea::placeholder {
@@ -691,10 +698,12 @@ a {
 }
 
 #save-task-btn,
-#cancel-task-btn {
+#cancel-task-btn,
+#cancel-edit-btn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
     transition: background-color var(--transition-main),
         color var(--transition-main),
         transform var(--transition-main),
@@ -703,7 +712,8 @@ a {
 }
 
 #save-task-btn:hover,
-#cancel-task-btn:hover {
+#cancel-task-btn:hover,
+#cancel-edit-btn:hover {
     color: var(--text-color);
     outline: 0.1rem solid var(--goal-card-pri);
     outline-offset: 0.1rem;
@@ -712,7 +722,8 @@ a {
 }
 
 #save-task-btn:active,
-#cancel-task-btn:active {
+#cancel-task-btn:active,
+#cancel-edit-btn:active {
     transform: translateY(0);
 }
 
@@ -726,10 +737,36 @@ a {
 }
 
 /* Edit-task-mode Form  */
+#edit-modal .modal-content {
+    max-height: 75vh;
+    overflow: hidden;
+}
+
+.edit-scroll-container {
+    max-height: 60vh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
 .edit-header {
     display: flex;
-    align-items: center;
     justify-content: flex-end;
+    align-items: center;
+
+    padding: 0.4rem 0.6rem;
+}
+
+.edit-actions,
+.clear-all {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .clear-all,
@@ -738,7 +775,13 @@ a {
     background: transparent;
     color: var(--text-color);
     border: none;
-    padding: 0.6rem;
+    padding: 0;
+    width: 3.2rem;
+    height: 3.2rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 0.6rem;
     cursor: pointer;
 
@@ -796,7 +839,9 @@ a {
 }
 
 .edit-task-btn:hover {
-    background: var(--hover-bg);
+    background: var(--goal-card-bg);
+    color: var(--text-color);
+    outline: 0.1rem solid var(--goal-card-pri);
 }
 
 .edit-empty-msg {
@@ -810,7 +855,7 @@ a {
 
     flex: 1;
 
-    /* overflow-y: auto; */
+    overflow: visible;
 
     width: 100%;
     display: flex;
@@ -819,9 +864,24 @@ a {
 }
 
 .edit-task-items {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.6rem;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.8rem;
+
+    transition: background var(--transition-main);
+}
+
+.edit-task-items:hover {
+    background: var(--hover-bg);
+}
+
+.edit-task-items:hover .edit-actions {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .edit-task-title {
@@ -833,14 +893,30 @@ a {
     font-weight: 500;
     color: var(--text-color);
     flex: 1;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 
 .edit-actions {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
-    align-self: flex-end;
+    flex-shrink: 0;
+    gap: 0.8rem;
     align-items: center;
+    justify-content: flex-end;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity var(--transition-main);
+}
+
+#cancel-edit-btn {
+    background: var(--hover-bg);
+    /* The rest was handled together with the other cancel button in the form-btn section. */
 }
 
 
