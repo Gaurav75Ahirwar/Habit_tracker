@@ -290,7 +290,7 @@ a {
 }
 
 /* Empty Message  */
-#empty-msg {
+.empty-msg {
     color: var(--border-color);
     text-align: center;
     font-size: 1.5rem;
@@ -738,6 +738,7 @@ a {
 
 /* Edit-task-mode Form  */
 #edit-modal .modal-content {
+    min-height: 35rem;
     max-height: 75vh;
     overflow: hidden;
 }
@@ -752,8 +753,10 @@ a {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    flex: 1;
 }
 
+/* --The header  */
 .edit-header {
     display: flex;
     justify-content: flex-end;
@@ -762,6 +765,7 @@ a {
     padding: 0.4rem 0.6rem;
 }
 
+/* --The Action button  */
 .edit-actions,
 .clear-all {
     display: flex;
@@ -844,10 +848,7 @@ a {
     outline: 0.1rem solid var(--goal-card-pri);
 }
 
-.edit-empty-msg {
-    display: none;
-}
-
+/* --The task List style */
 .edit-task-list {
     list-style: none;
     padding: 0;

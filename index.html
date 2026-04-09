@@ -34,7 +34,7 @@
             <!-- Logina & Theme buttons -->
             <div class="login_container">
 
-                <button id="theme-toggle">
+                <button id="theme-toggle" title="Dark Mode">
                     <i data-lucide="moon"></i>
                 </button>
 
@@ -57,11 +57,13 @@
 
                 <h2>Today's Goals</h2>
 
+                <p id="empty-msg" class="empty-msg">
+                    No Goal Added Yet - Click "Add Task" to Add
+                </p>
+
                 <ul class="task-list">
 
-                    <p id="empty-msg">
-                        No Goal Added Yet - Click "Add Task" to Add
-                    </p>
+                    <!-- Tasks will be rendered here dynamically using JS -->
 
                 </ul>
 
@@ -118,7 +120,7 @@
                     </label>
 
                     <textarea id="task-desc-input" rows="3"
-                        placeholder="Enter Description (Ctrl + Enter to Save)"></textarea>
+                        placeholder="Enter Description (Enter + Shift to Save)"></textarea>
 
                 </div>
                 <div class="form-btn">
@@ -148,41 +150,13 @@
 
             <div class="edit-scroll-container">
 
-                <!-- Clear All -->
-                <div class="edit-header">
-
-                    <button class="clear-all">
-                        <i data-lucide="trash"></i>
-                    </button>
-
-                </div>
+                <!-- Clear All -- Added Dynamically -->
 
                 <ul class="edit-task-list">
 
-                    <p2 class="edit-empty-msg">
-                        No Task Available to Edit
-                    </p2>
+                    <!-- Empty Message Dynamically Rendered Here if No Tasks Available for Edit  -->
+
                     <!-- Taks rendered here dynamically using JS -->
-                    <!-- Sample Task Item -->
-                    <li class="edit-task-items">
-
-                        <span class="edit-task-title">
-                            <i data-lucide="dot"></i>
-                            Study DSA
-                        </span>
-
-                        <div class="edit-actions">
-
-                            <button class="edit-task-btn">
-                                <i data-lucide="pen"></i>
-                            </button>
-
-                            <button class="clear-task-btn">
-                                <i data-lucide="trash"></i>
-                            </button>
-
-                        </div>
-                    </li>
 
                 </ul>
 
