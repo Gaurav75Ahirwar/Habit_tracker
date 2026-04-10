@@ -84,7 +84,114 @@
             </div>
 
             <div class="productivity">
+
                 <h2>Productivity - Today</h2>
+
+                <!-- Progress Ring -->
+                <div class="progress-ring-container">
+
+                    <svg class="progress-ring" width="160" height="160">
+
+                        <!-- Track  -->
+                        <circle class="ring-track" cx="80" cy="80" r="70"></circle>
+                        <circle class="ring-progress" cx="80" cy="80" r="70"></circle>
+
+                    </svg>
+
+                    <!-- Percentage Text -->
+                    <div class="progress-percentage">
+
+                        <span id="productivity-percentage">
+                            0
+                            <i data-lucide="percent"></i>
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- Task Statistics -->
+                <div class="task-stats">
+
+                    <div class="stat-iten">
+
+                        <span class="stat-number" id="completed-count">
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Completed
+                        </span>
+
+                    </div>
+
+                    <div class="stat-divider">
+                        /
+                    </div>
+
+                    <div class="stat-item">
+
+                        <span class="stat-number" id="remaining-count">
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Remaining
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- Time-of-Day Bar -->
+                <div class="time-bar-section">
+
+                    <div class="time-bar-label">
+
+                        Daily Activity
+
+                    </div>
+
+                    <div class="time-bar" id="time-bar">
+
+                        <!-- Time Segments  -->
+                        <div class="time-segment night"></div>
+                        <div class="time-segment morning"></div>
+                        <div class="time-segment afternoon"></div>
+                        <div class="time-segment evening"></div>
+
+                        <!-- Markers will be added dynamically -->
+
+                        <!-- Sample -->
+                        <div class="time-marker" style="left: 56%;" title="1:40 PM"></div>
+                    </div>
+
+                    <div class="time-labels">
+
+                        <span>00</span>
+                        <span>06</span>
+                        <span>12</span>
+                        <span>18</span>
+                        <span>24</span>
+
+                    </div>
+                </div>
+
+                <!-- Status & Quote -->
+                <div class="productivity-footer">
+
+                    <div class="productivity-status" id="productivity-status">
+
+                        Status: Starting
+                    </div>
+
+                </div>
+
+                <div class="productivity-quote" id="productivity-quote">
+
+                    Stay Consistent, Stay Producive!
+
+                </div>
 
             </div>
 
