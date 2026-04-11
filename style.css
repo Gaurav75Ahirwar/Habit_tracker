@@ -971,18 +971,19 @@ a {
 }
 
 .progress-ring {
-    transform: rotate(-90deg);
+    /* transform: rotate(-195deg); */
+    transform: rotate(-210deg);
 }
 
 .ring-track {
     fill: none;
-    stroke: var(--border-color);
+    stroke: var(--background-color);
     stroke-width: 1.2rem;
 }
 
 .ring-progress {
     fill: none;
-    stroke: var(--productivity-card-pri);
+    stroke: var(--background-color);
     stroke-width: 1.2rem;
     stroke-linecap: round;
     transition: stroke-dashoffset var(--transition-main);
@@ -1003,6 +1004,8 @@ a {
     grid-template-rows: auto auto;
     gap: 1.6rem;
     align-items: center;
+
+    transform: translateY(-1.5rem);
 }
 
 .grid-cell {

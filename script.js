@@ -381,4 +381,27 @@ document.addEventListener("DOMContentLoaded", () => {
         renderEditTasks();
     }
 
+
+    // The progres card 
+
+    // Progress Ring 
+    const radius = 70;
+    const circumference = 2 * Math.PI * radius;
+
+    // 210deg 
+    const arclength = circumference * (240 / 360);
+    const track = document.querySelector(".ring-track");
+    const progress = document.querySelector(".ring-progress");
+
+    track.style.strokeDasharray = `${arclength} ${circumference}`;
+    progress.style.strokeDasharray = `${arclength} ${circumference}`;
+
+    // Progress Animation 
+    function updateRing(percent) {
+        const offset = arclength - (percent / 100) * arclength;
+
+        progress.style.strokeDashoffset = offset;
+    }
+
+
 });
