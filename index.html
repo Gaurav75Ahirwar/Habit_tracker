@@ -85,111 +85,106 @@
 
             <div class="productivity">
 
-                <h2>Productivity - Today</h2>
+                <!-- Header -->
+                <div class="productivity-header">
+
+                    <h2>Productivity - Today</h2>
+
+                </div>
+
 
                 <!-- Progress Ring -->
-                <div class="progress-ring-container">
+                <div class="productivity-ring">
 
                     <svg class="progress-ring" width="160" height="160">
 
-                        <!-- Track  -->
-                        <circle class="ring-track" cx="80" cy="80" r="70"></circle>
-                        <circle class="ring-progress" cx="80" cy="80" r="70"></circle>
+                        <circle class="ring-track" cx="80" cy="80" r="70" />
+
+                        <circle class="ring-progress" cx="80" cy="80" r="70" />
 
                     </svg>
 
-                    <!-- Percentage Text -->
                     <div class="progress-percentage">
 
-                        <span id="productivity-percentage">
-                            0
-                            <i data-lucide="percent"></i>
+                        <span id="productivity-percent">
+                            0%
                         </span>
 
                     </div>
 
                 </div>
 
-                <!-- Task Statistics -->
-                <div class="task-stats">
 
-                    <div class="stat-iten">
+                <!-- 2 × 2 Grid Section -->
+                <div class="productivity-stats-grid">
+
+                    <!-- Cell 1 — Completed -->
+                    <div class="grid-cell completed-cell">
+
+                        <span class="stat-label">
+                            Completed :
+                        </span>
 
                         <span class="stat-number" id="completed-count">
                             0
                         </span>
 
+                    </div>
+
+
+                    <!-- Cell 2 — Time Bar -->
+                    <div class="grid-cell time-bar-cell">
+
+                        <div class="time-bar" id="time-bar">
+
+                            <!-- Stamps will be inserted dynamically -->
+
+                            <!-- Example -->
+
+                            <div class="time-stamp" style="left: 45%;" title="Finish assignment - 6:10 PM"></div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Cell 3 — Remaining -->
+                    <div class="grid-cell remaining-cell">
+
                         <span class="stat-label">
-                            Completed
+                            Remaining :
                         </span>
-
-                    </div>
-
-                    <div class="stat-divider">
-                        /
-                    </div>
-
-                    <div class="stat-item">
 
                         <span class="stat-number" id="remaining-count">
                             0
                         </span>
 
-                        <span class="stat-label">
-                            Remaining
+                    </div>
+
+
+                    <!-- Cell 4 — Status -->
+                    <div class="grid-cell status-cell">
+
+                        <span class="productivity-status stat-label" id="productivity-status">
+                            Status :
+                        </span>
+
+                        <span class="productivity-status stat-number" id="productivity-status">
+                            Starting
                         </span>
 
                     </div>
 
                 </div>
 
-                <!-- Time-of-Day Bar -->
-                <div class="time-bar-section">
 
-                    <div class="time-bar-label">
+                <!-- Quote -->
+                <div class="productivity-quote-container">
 
-                        Daily Activity
-
-                    </div>
-
-                    <div class="time-bar" id="time-bar">
-
-                        <!-- Time Segments  -->
-                        <div class="time-segment night"></div>
-                        <div class="time-segment morning"></div>
-                        <div class="time-segment afternoon"></div>
-                        <div class="time-segment evening"></div>
-
-                        <!-- Markers will be added dynamically -->
-
-                        <!-- Sample -->
-                        <div class="time-marker" style="left: 56%;" title="1:40 PM"></div>
-                    </div>
-
-                    <div class="time-labels">
-
-                        <span>00</span>
-                        <span>06</span>
-                        <span>12</span>
-                        <span>18</span>
-                        <span>24</span>
-
-                    </div>
-                </div>
-
-                <!-- Status & Quote -->
-                <div class="productivity-footer">
-
-                    <div class="productivity-status" id="productivity-status">
-
-                        Status: Starting
-                    </div>
-
-                </div>
-
-                <div class="productivity-quote" id="productivity-quote">
-
-                    Stay Consistent, Stay Producive!
+                    <span class="productivity-quote" id="productivity-quote">
+                        Stay consistent.
+                    </span>
 
                 </div>
 

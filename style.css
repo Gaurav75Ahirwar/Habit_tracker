@@ -258,6 +258,15 @@ a {
 
     max-height: calc(100vh - 15rem);
 
+    border-radius: 2rem;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: space-between;
+
 }
 
 .goals h2 {
@@ -925,51 +934,175 @@ a {
 .productivity {
     color: var(--productivity-card-pri);
     background: var(--productivity-card-bg);
+
+    border-radius: 2rem;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
 }
 
-.productivity h2 {
+.productivity-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.productivity-header h2 {
     display: inline-block;
     font-size: 2.5rem;
-    font-weight: 500;
+    font-weight: 400;
     padding: 0.6rem 1.5rem;
     margin: 2rem auto;
     border-radius: 1rem;
     background: var(--background-color);
     z-index: 0;
 
+}
+
+.productivity-ring {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.ring-track {
+    fill: none;
+    stroke: var(--border-color);
+    stroke-width: 1.2rem;
+}
+
+.ring-progress {
+    fill: none;
+    stroke: var(--productivity-card-pri);
+    stroke-width: 1.2rem;
+    stroke-linecap: round;
+    transition: stroke-dashoffset var(--transition-main);
+}
+
+.progress-percentage {
+    position: absolute;
+    font-size: 3.4rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Stat Grid  */
+.productivity-stats-grid {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.6rem;
+    align-items: center;
+}
+
+.grid-cell {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--text-color);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.completed-cell,
+.remaining-cell {
+    align-items: flex-start;
+}
+
+.time-bar-cell {
+    align-items: stretch;
+}
+
+.status-cell {
+    align-items: flex-start;
+}
+
+.stat-label {
+    color: var(--productivity-card-pri);
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* Time Bar  */
+.time-bar {
+    position: relative;
+    width: 50%;
+    height: 1rem;
+    border-radius: 1rem;
+    background: var(--border-color);
+    overflow: hidden;
+}
+
+.time-bar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--productivity-card-pri);
+    opacity: 0.25;
+}
+
+.time-stamp {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0.2rem;
+    background: var(--productivity-card-pri);
+    transition: transform var(--transition-main);
+}
+
+.time-stamp:hover {
+    transform: scaleY(1.2);
+    background: var(--hover-bg);
+}
+
+/* Quote Container  */
+.productivity-quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--border-color);
+    text-align: center;
+    max-width: 80%;
 }
 
 /* Progress Card  */
 .progress {
     color: var(--progress-card-pri);
     background: var(--progress-card-bg);
-}
 
-.progress h2 {
-    display: inline-block;
-    font-size: 2.5rem;
-    font-weight: 500;
-    padding: 0.6rem 1.5rem;
-    margin: 2rem auto;
-    border-radius: 1rem;
-    background: var(--background-color);
-    z-index: 0;
-
-}
-
-
-
-
-/* Handled Together */
-.goals,
-.productivity,
-.progress {
     border-radius: 2rem;
     padding: 2rem;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */
     align-content: space-between;
+}
+
+.progress h2 {
+    display: inline-block;
+    font-size: 2.5rem;
+    font-weight: 400;
+    padding: 0.6rem 1.5rem;
+    margin: 2rem auto;
+    border-radius: 1rem;
+    background: var(--background-color);
+    z-index: 0;
 
 }
