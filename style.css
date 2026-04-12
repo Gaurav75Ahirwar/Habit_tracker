@@ -31,6 +31,9 @@ html {
 
     --productivity-card-pri: #4a90e2;
     --productivity-card-bg: #dceeff;
+    --ring-low: #e74c3c;
+    --ring-medium: #f1c40f;
+    --ring-high: var(--productivity-card-pri);
 
     --progress-card-pri: #27ae60;
     --progress-card-bg: #e8f8f0;
@@ -49,6 +52,10 @@ html {
 
     --productivity-card-pri: #4a90e2;
     --productivity-card-bg: #1c2a3a;
+    --ring-low: #ff6b6b;
+    --ring-medium: #ffd93d;
+    --ring-high: var(--productivity-card-pri);
+
 
     --progress-card-pri: #27ae60;
     --progress-card-bg: #1b2f24;
@@ -971,7 +978,6 @@ a {
 }
 
 .progress-ring {
-    /* transform: rotate(-195deg); */
     transform: rotate(-210deg);
 }
 
@@ -983,10 +989,10 @@ a {
 
 .ring-progress {
     fill: none;
-    stroke: var(--background-color);
     stroke-width: 1.2rem;
     stroke-linecap: round;
-    transition: stroke-dashoffset var(--transition-main);
+    stroke-linejoin: round;
+    transition: stroke 0.4s ease;
 }
 
 .progress-percentage {

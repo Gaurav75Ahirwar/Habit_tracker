@@ -40,6 +40,185 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 175);
     });
 
+    // The progres card 
+
+    // Progress Ring 
+    const radius = 70;
+    const circumference = 2 * Math.PI * radius;
+
+    // 210deg 
+    const arclength = circumference * (240 / 360);
+    const track = document.querySelector(".ring-track");
+    const progress = document.querySelector(".ring-progress");
+
+    track.style.strokeDasharray = `${arclength} ${circumference}`;
+    progress.style.strokeDasharray = `${arclength} ${circumference}`;
+
+    progress.style.strokeDashoffset = arclength;
+
+    // ── Ring Gradient (two-stop so it actually looks like a gradient)
+    function createGradient() {
+        const svg = document.querySelector(".progress-ring");
+
+        const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+
+        const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+
+        gradient.setAttribute("id", "ringGradient");
+
+        gradient.setAttribute("x1", "0%");
+        gradient.setAttribute("y1", "100%");
+        gradient.setAttribute("x2", "100%");
+        gradient.setAttribute("y2", "0%");
+
+        const start = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+        start.setAttribute("offset", "0%");
+        start.setAttribute("stop-opacity", 0.55);
+
+        const end = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+        end.setAttribute("offset", "100%");
+        end.setAttribute("off-stop", 1);
+
+        gradient.appendChild(start);
+        gradient.appendChild(end);
+
+        defs.appendChild(gradient);
+        svg.appendChild(defs);
+        document.querySelector(".ring-progress").setAttribute("stroke", "url(#ringGradient)");
+
+    }
+
+    //Resolve the CSS variables
+    function resolveCSSVar(varName) {
+        return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    }
+
+    // Update Gradient
+    function updateRingGradient(percent) {
+        const stops = document.querySelectorAll("#ringGradient stop");
+        if (!stops.length) return;
+
+        let color;
+        if (percent < 40) {
+            color = resolveCSSVar("--ring-low");
+        }
+        else if (percent < 70) {
+            color = resolveCSSVar("--ring-medium");
+        }
+        else {
+            color = resolveCSSVar("--ring-high");
+        }
+
+        stops[0].setAttribute("stop-color", color);
+        stops[1].setAttribute("stop-color", color);
+    }
+
+    //Smooth Ring Animation
+    let currentOffset = arclength;
+    let animationID = null;
+
+    function animateRingTo(targetOffset) {
+        if (animationID) cancelAnimationFrame(animationID);
+
+        const startOffset = currentOffset;
+        const delta = targetOffset - startOffset;
+        const duration = 600; // 600 ms
+        const startTime = performance.now();
+
+        function step(now) {
+            const elapsed = now - startTime;
+            const t = Math.min(elapsed / duration, 1);
+
+            const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+            currentOffset = startOffset + delta * eased;
+            progress.style.strokeDashoffset = currentOffset;
+
+            if (t < 1) {
+                animationID = requestAnimationFrame(step);
+            }
+            else {
+                currentOffset = targetOffset;
+                animationID = null;
+            }
+        }
+
+        animationID = requestAnimationFrame(step);
+    }
+
+    // Progress Animation 
+    function updateRing(percent) {
+        const offset = arclength * (1 - percent / 100);
+
+        animateRingTo(targetOffset);
+    }
+
+    // Smooth Stats 
+    const counterState = {};
+
+    function animateCounter(elementId, targetValue) {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+
+        const startValue = counterState[elementId] ?? 0;
+        counterState[elementId] = targetValue;
+
+        if (startValue === targetValue) return;
+
+        const duration = 500; // ms
+        const startTime = performance.now();
+
+        function step(now) {
+            const elapsed = now - startTime;
+            const t = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+
+            const current = Math.round(startValue + (targetValue - startValue) * eased);
+            el.textContent = elementId === "productivity-percent"
+                ? current + "%"
+                : current;
+
+            if (t < 1) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    // Initialise the gradient 
+    createGradient();
+
+    // Productivity Controller 
+    function updateProductivity() {
+        const tasks = document.querySelectorAll(".task-checkbox");
+        const total = tasks.length;
+        const completed = document.querySelectorAll(".task-checkbox:checked").length;
+        const remaining = total - completed;
+
+        let percent = 0;
+        if (total) {
+            percent = Math.round((completed / total) * 100);
+        }
+
+        updateRing(percent);
+        updateRingGradient(percent);
+
+        updateStats(completed, remaining, percent);
+    }
+
+    // Update the stats 
+    function updateStats(completed, remaining, percent) {
+        animateCounter("completed-count", completed);
+        animateCounter("remaining-count", remaining);
+        animateCounter("productivity-percent", percent);
+    }
+
+    // Trigger Productivity when task status changes 
+    document.addEventListener("change", function (e) {
+        if (e.target.classList.contains("task-checkbox")) {
+            updateProductivity();
+        }
+    });
+
 
     // Task description toggle button 
     document.querySelectorAll(".toggle-desc").forEach(button => {
@@ -177,6 +356,9 @@ document.addEventListener("DOMContentLoaded", () => {
         taskList.innerHTML = "";
         loadTasks();
 
+        // Update productivity
+        updateProductivity();
+
         emptyMessage.style.display = "none";
         taskForm.reset();
         modal.classList.remove("show");
@@ -216,6 +398,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     loadTasks();
+
+    // Update productivity
+    updateProductivity();
 
     let editingTaskIndex = null;
 
@@ -360,6 +545,10 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("tasks", JSON.stringify(tasks));
 
         loadTasks();
+
+        // Update productivity
+        updateProductivity();
+
         renderEditTasks();
     }
 
@@ -378,30 +567,15 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.removeItem("tasks");
 
         loadTasks();
+
+        // Update productivity
+        updateProductivity();
+
         renderEditTasks();
     }
 
-
-    // The progres card 
-
-    // Progress Ring 
-    const radius = 70;
-    const circumference = 2 * Math.PI * radius;
-
-    // 210deg 
-    const arclength = circumference * (240 / 360);
-    const track = document.querySelector(".ring-track");
-    const progress = document.querySelector(".ring-progress");
-
-    track.style.strokeDasharray = `${arclength} ${circumference}`;
-    progress.style.strokeDasharray = `${arclength} ${circumference}`;
-
-    // Progress Animation 
-    function updateRing(percent) {
-        const offset = arclength - (percent / 100) * arclength;
-
-        progress.style.strokeDashoffset = offset;
-    }
+    loadTasks();
+    updateProductivity();
 
 
 });
