@@ -1054,30 +1054,51 @@ a {
     width: 50%;
     height: 1rem;
     border-radius: 1rem;
-    background: var(--border-color);
-    overflow: hidden;
+    /* Base track colour — same as the ring track */
+    background: var(--background-color);
+    overflow: visible;
+    /* Keep a subtle border so the empty bar is visible */
+    outline: 0.1rem solid var(--border-color);
 }
 
-.time-bar::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--productivity-card-pri);
-    opacity: 0.25;
-}
-
-.time-stamp {
+/* .time-bar-fill — injected by JS, grows left→right as time passes.
+   Width is set as a % (0% at midnight, ~100% at end of day). */
+.time-bar-fill {
     position: absolute;
     top: 0;
-    bottom: 0;
-    width: 0.2rem;
+    left: 0;
+    height: 100%;
+    border-radius: 1rem;
+    /* Uses the productivity primary colour to match the card's theme */
     background: var(--productivity-card-pri);
-    transition: transform var(--transition-main);
+    opacity: 0.7;
+    /* Smooth width transition as minutes tick by */
+    transition: width 1s ease;
+    pointer-events: none;
+    /* Clicks pass through to stamps */
+}
+
+/* Stamps now use --text-color so they always contrast against
+   the fill and the bar background regardless of theme.
+   Also removed overflow:hidden from parent so stamps aren't clipped. */
+.time-stamp {
+    position: absolute;
+    /* Extend slightly above and below the bar for visibility */
+    top: -0.3rem;
+    bottom: -0.3rem;
+    width: 0.2rem;
+    border-radius: 0.1rem;
+    background: var(--text-color);
+    transition: transform var(--transition-main),
+        opacity var(--transition-main);
+    /* Stack stamps above the fill layer */
+    z-index: 1;
+    cursor: default;
 }
 
 .time-stamp:hover {
-    transform: scaleY(1.2);
-    background: var(--hover-bg);
+    transform: scaleY(1.15);
+    opacity: 0.7;
 }
 
 /* Quote Container  */
